@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 .pic {
   width: 100%;
   height: 100%;
@@ -25,21 +26,70 @@ header .headerInner {
   justify-content: space-between;
   align-items: center;
 }
-header .headerInner h1 {
-  font-size: 25px;
+header .headerInner .headerBox {
+  display: flex;
+}
+header .headerInner .headerBox .menuBtn {
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+header .headerInner .headerBox h1 {
+  font-size: 27px;
+  cursor: pointer;
 }
 header .headerInner .searchBox {
   width: 35px;
   height: 35px;
+  cursor: pointer;
 }
 
 .contentBox {
+  position: relative;
   width: 100%;
   height: 90vh;
   padding: 10px;
 }
-.contentBox .inner {
-  border: 1px solid #000;
+.contentBox .menuBox {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 0;
+  height: 0%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+  transition: 0.3s linear;
+  overflow: hidden;
+}
+.contentBox .menuBox.showMenu {
+  width: 250px;
+  height: 100%;
+  padding: 10px;
+}
+.contentBox .menuBox ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contentBox .menuBox ul li {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 25px;
+  display: flex;
+  color: #ccc;
+  align-items: center;
+  transition: 0.3s linear;
+}
+.contentBox .menuBox ul li:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px 0 15px 0;
+  color: #fff;
 }
 .contentBox .inner .cardBox {
   position: relative;
@@ -58,33 +108,73 @@ header .headerInner .searchBox {
   top: 50%;
   left: 50%;
   width: 500px;
-  height: 70%;
   transform: translate(-100%, -50%);
-  border: 1px solid #000;
 }
 .contentBox .inner .cardBox .profile .profileTextBox .mainText {
   width: 100%;
-  border: 1px solid blue;
   display: flex;
 }
 .contentBox .inner .cardBox .profile .profileTextBox .mainText div {
-  margin-right: 25px;
+  margin-right: 50px;
+}
+.contentBox .inner .cardBox .profile .profileTextBox .mainText div.showStroke .pic path {
+  stroke-dashoffset: 0;
+}
+.contentBox .inner .cardBox .profile .profileTextBox .mainText div.showColor .pic path {
+  fill: rgba(0, 0, 0, 0.5);
 }
 .contentBox .inner .cardBox .profile .profileTextBox .mainText div:nth-of-type(3) {
   margin-right: 0;
 }
 .contentBox .inner .cardBox .profile .profileTextBox .mainText div span {
   display: inline-block;
-  width: 60px;
+  width: 50px;
   height: 60px;
 }
+.contentBox .inner .cardBox .profile .profileTextBox .mainText div span .pic path {
+  stroke: #111;
+  stroke-width: 10;
+  fill: rgba(0, 0, 0, 0);
+  stroke-dasharray: 2900;
+  stroke-dashoffset: 2900;
+  transition: stroke-dashoffset 2s, fill 0.5s 1.8s;
+}
 .contentBox .inner .cardBox .profile .profileTextBox .subText {
+  position: relative;
   width: 100%;
   padding: 10px;
+  margin-top: 200px;
+  opacity: 0;
+  transition: 0.7s linear;
 }
-.contentBox .inner .cardBox .profile .profileTextBox .subText p {
-  width: 100%;
+.contentBox .inner .cardBox .profile .profileTextBox .subText.showSubText {
+  opacity: 1;
+}
+.contentBox .inner .cardBox .profile .profileTextBox .subText .blurBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 155%;
   height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  filter: blur(5px);
+  z-index: -1;
+}
+.contentBox .inner .cardBox .profile .profileTextBox .subText h2 {
+  width: 200%;
+  height: 100%;
+  font-size: 30px;
+}
+.contentBox .inner .cardBox .profile .profileTextBox .subText .line {
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+  transition: 0.3s all linear;
+}
+.contentBox .inner .cardBox .profile .profileTextBox .subText .line.showLine {
+  width: 150%;
 }
 .contentBox .inner .cardBox .profile .profileImgBox {
   position: absolute;
@@ -92,9 +182,14 @@ header .headerInner .searchBox {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 500px;
-  height: 90%;
+  height: 80%;
+  transition: 0.5s linear;
+  overflow: hidden;
+  z-index: -1;
 }
 .contentBox .inner .cardBox .profile .profileImgBox.active {
+  border-radius: 40px 0 40px 0;
+  box-shadow: 2px 2px 5px rgb(140, 140, 140);
   transform: translateY(-50%);
 }
 .contentBox .inner .cardBox .profile .profileImgBox img {
