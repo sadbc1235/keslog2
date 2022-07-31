@@ -49,7 +49,8 @@ header .headerInner .searchBox {
   position: relative;
   width: 100%;
   height: 90vh;
-  padding: 10px;
+  padding: 15px;
+  padding-right: 30px;
 }
 .contentBox .menuBox {
   position: absolute;
@@ -61,6 +62,7 @@ header .headerInner .searchBox {
   z-index: 99;
   transition: 0.3s linear;
   overflow: hidden;
+  box-shadow: inset -2px -2px 3px rgb(112, 86, 0);
 }
 .contentBox .menuBox.showMenu {
   width: 250px;
@@ -85,11 +87,16 @@ header .headerInner .searchBox {
   color: #ccc;
   align-items: center;
   transition: 0.3s linear;
+  box-shadow: inset -2px -2px 3px rgb(112, 86, 0);
+  cursor: pointer;
 }
-.contentBox .menuBox ul li:hover {
+.contentBox .menuBox ul li.active {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 15px 0 15px 0;
   color: #fff;
+}
+.contentBox .inner {
+  position: relative;
 }
 .contentBox .inner .cardBox {
   position: relative;
@@ -109,6 +116,8 @@ header .headerInner .searchBox {
   left: 50%;
   width: 500px;
   transform: translate(-100%, -50%);
+  z-index: 2;
+  display: none;
 }
 .contentBox .inner .cardBox .profile .profileTextBox .mainText {
   width: 100%;
@@ -121,7 +130,8 @@ header .headerInner .searchBox {
   stroke-dashoffset: 0;
 }
 .contentBox .inner .cardBox .profile .profileTextBox .mainText div.showColor .pic path {
-  fill: rgba(0, 0, 0, 0.5);
+  background-color: #333;
+  fill: rgba(51, 51, 51, 0.9);
 }
 .contentBox .inner .cardBox .profile .profileTextBox .mainText div:nth-of-type(3) {
   margin-right: 0;
@@ -137,15 +147,28 @@ header .headerInner .searchBox {
   fill: rgba(0, 0, 0, 0);
   stroke-dasharray: 2900;
   stroke-dashoffset: 2900;
-  transition: stroke-dashoffset 2s, fill 0.5s 1.8s;
+  transition: stroke-dashoffset 2s, fill 0.5s 1.4s;
+}
+.contentBox .inner .cardBox .profile .profileTextBox .introduce {
+  padding: 10px;
+  letter-spacing: 0.5px;
+  font-size: 16px;
+  opacity: 0;
+  transition: 0.7s linear;
+  cursor: default;
+}
+.contentBox .inner .cardBox .profile .profileTextBox .introduce.showIntroduce {
+  opacity: 1;
+}
+.contentBox .inner .cardBox .profile .profileTextBox .introduce span {
+  font-weight: bold;
 }
 .contentBox .inner .cardBox .profile .profileTextBox .subText {
   position: relative;
   width: 100%;
-  padding: 10px;
-  margin-top: 200px;
   opacity: 0;
   transition: 0.7s linear;
+  cursor: default;
 }
 .contentBox .inner .cardBox .profile .profileTextBox .subText.showSubText {
   opacity: 1;
@@ -154,13 +177,15 @@ header .headerInner .searchBox {
   position: absolute;
   top: 0;
   left: 0;
-  width: 155%;
+  width: 152%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.6);
   filter: blur(5px);
   z-index: -1;
 }
 .contentBox .inner .cardBox .profile .profileTextBox .subText h2 {
+  padding: 10px;
+  padding-bottom: 0;
   width: 200%;
   height: 100%;
   font-size: 30px;
@@ -168,13 +193,13 @@ header .headerInner .searchBox {
 .contentBox .inner .cardBox .profile .profileTextBox .subText .line {
   position: absolute;
   width: 0%;
-  height: 2px;
+  height: 3px;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: -1;
   transition: 0.3s all linear;
 }
 .contentBox .inner .cardBox .profile .profileTextBox .subText .line.showLine {
-  width: 150%;
+  width: 152%;
 }
 .contentBox .inner .cardBox .profile .profileImgBox {
   position: absolute;
@@ -185,17 +210,57 @@ header .headerInner .searchBox {
   height: 80%;
   transition: 0.5s linear;
   overflow: hidden;
-  z-index: -1;
+  z-index: 1;
+  cursor: pointer;
 }
 .contentBox .inner .cardBox .profile .profileImgBox.active {
   border-radius: 40px 0 40px 0;
   box-shadow: 2px 2px 5px rgb(140, 140, 140);
   transform: translateY(-50%);
+  cursor: default;
+}
+.contentBox .inner .cardBox .profile .profileImgBox.active img {
+  filter: blur(0px);
 }
 .contentBox .inner .cardBox .profile .profileImgBox img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: blur(3px);
+}
+.contentBox .inner .upArrow,
+.contentBox .inner .downArrow {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+.contentBox .inner .upArrow .pic,
+.contentBox .inner .downArrow .pic {
+  height: 80%;
+}
+.contentBox .inner .upArrow {
+  top: 0;
+  width: 70px;
+  height: 75px;
+}
+.contentBox .inner .upArrow .upText {
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+.contentBox .inner .downArrow {
+  bottom: 0px;
+  width: 70px;
+  height: 70px;
+}
+.contentBox .inner .downArrow .downText {
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
 }
 
 /*# sourceMappingURL=main.css.map */

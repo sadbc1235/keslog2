@@ -55,7 +55,8 @@ header {
   position: relative;
   width: 100%;
   height: 90vh;
-  padding: 10px;
+  padding: 15px;
+  padding-right: 30px;
 
   .menuBox {
     position: absolute;
@@ -67,6 +68,7 @@ header {
     z-index: 99;
     transition: .3s linear;
     overflow: hidden;
+    box-shadow: inset -2px -2px 3px rgb(112, 86, 0);
 
     &.showMenu {
       width: 250px;
@@ -92,8 +94,10 @@ header {
         color: #ccc;
         align-items: center;
         transition: .3s linear;
+        box-shadow: inset -2px -2px 3px rgb(112, 86, 0);
+        cursor: pointer;
 
-        &:hover {
+        &.active {
           background-color: rgba(0, 0, 0, 0.5);
           border-radius: 15px 0 15px 0;
           color: #fff;
@@ -103,7 +107,7 @@ header {
   }
 
   .inner {
-
+    position: relative;
     .cardBox {
       position: relative;
       width: 100%;
@@ -118,7 +122,6 @@ header {
       }
 
       .profile {
-
         .profileTextBox {
           position: absolute;
           top: 50%;
@@ -126,6 +129,8 @@ header {
           width: 500px;
           // height: 70%;
           transform: translate(-100%, -50%);
+          z-index: 2;
+          display: none;
 
           .mainText {
             width: 100%;
@@ -141,7 +146,8 @@ header {
               }
               &.showColor {
                 .pic path {
-                  fill: rgba(0, 0, 0, 0.5);
+                  background-color: #333;
+                  fill: rgba(51, 51, 51, .9);
                 }
               }
               &:nth-of-type(3) {
@@ -159,7 +165,7 @@ header {
                     fill: rgba(0, 0, 0, 0);
                     stroke-dasharray: 2900;
                     stroke-dashoffset: 2900;
-                    transition: stroke-dashoffset 2s, fill 0.5s 1.8s;
+                    transition: stroke-dashoffset 2s, fill 0.5s 1.4s;
                   }
                 }
               }
@@ -167,13 +173,29 @@ header {
             
           }
 
+          .introduce {
+            padding: 10px;
+            letter-spacing: .5px;
+            font-size: 16px;
+            opacity: 0;
+            transition: .7s linear;
+            cursor: default;
+
+            &.showIntroduce {
+              opacity: 1;
+            }
+
+            span {
+              font-weight: bold;
+            }
+          }
+
           .subText {
             position: relative;
             width: 100%;
-            padding: 10px;
-            margin-top: 200px;
             opacity: 0;
             transition: .7s linear;
+            cursor: default;
             
             &.showSubText {
               opacity: 1;
@@ -183,7 +205,7 @@ header {
               position: absolute;
               top: 0;
               left: 0;
-              width: 155%;
+              width: 152%;
               height: 100%;
               background-color: rgba(255, 255, 255, 0.6);
               filter: blur(5px);
@@ -191,6 +213,8 @@ header {
             }
 
             h2 {
+              padding: 10px;
+              padding-bottom: 0;
               width: 200%;
               height: 100%;
               font-size: 30px;
@@ -199,13 +223,13 @@ header {
             .line {
               position: absolute;
               width: 0%;
-              height: 2px;
+              height: 3px;
               background-color: rgba(0, 0, 0, 0.5);
               z-index: -1;
               transition: .3s all linear;
 
               &.showLine {
-                width: 150%;
+                width: 152%;
               }
             }
           }
@@ -221,20 +245,64 @@ header {
           height: 80%;
           transition: .5s linear;
           overflow: hidden;
-          z-index: -1;
+          z-index: 1;
+          cursor: pointer;
 
           &.active {
             border-radius: 40px 0 40px 0;
             box-shadow: 2px 2px 5px rgb(140, 140, 140);
             transform: translateY(-50%);
+            cursor: default;
+            img {
+              filter: blur(0px);
+            }
           }
 
           img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: blur(3px);
           }
         }
+      }
+    }
+
+    .upArrow,
+    .downArrow {
+      position: absolute;
+      right: 0;
+      cursor: pointer;
+
+      .pic {
+        height: 80%;
+      }
+    }
+
+    .upArrow {
+      top: 0;
+      width: 70px;
+      height: 75px;
+
+      .upText {
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+      }
+    }
+    .downArrow {
+      bottom: 0px;
+      width: 70px;
+      height: 70px;
+
+      .downText {
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
       }
     }
   }
